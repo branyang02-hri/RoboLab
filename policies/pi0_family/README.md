@@ -63,6 +63,20 @@ uv run python policies/pi0_family/run.py --policy pi05 --remote-host <HOST> --re
 
 A full WebSocket URI (e.g. a hosted endpoint) can be passed with `--remote-uri`, which overrides `--remote-host` / `--remote-port`.
 
+## Run the dual-DROID example
+
+Start the Pi0.5 server above, then run both facing robots against that server:
+
+```bash
+cd robolab
+set -a; source .env; set +a  # if EULA settings are stored here
+uv run python policies/pi0_family/run_dual.py \
+    --headless --video-mode all \
+    --output-folder-name dual_pi05_run
+```
+
+The primary robot is prompted to put the Rubik's cube in the bowl while the partner puts the banana in the bowl. Results and videos are written to `output/dual_pi05_run/`.
+
 ## Variation scripts
 
 The pi0_family folder also ships controlled-variation runners that wrap the same client to sweep a single axis per registered env:
